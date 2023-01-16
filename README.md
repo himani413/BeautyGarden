@@ -1,2 +1,2 @@
 # BeautyGarden
-web developmennt project
+web development project
