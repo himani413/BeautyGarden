@@ -17,7 +17,7 @@
                 <div class="footer-col">
                     <div class="c-name"><h5 style="color: white;"><b>Beauty Garden</b></h5></div>
                     <ul class="list">
-                        <li>Get Your products and make your fashion</li>
+                        <li>Get Your products and make your fashion.</li>
                         <li>Shop online for better deals on Beauty Garden products.</li>
                         <li><img src="Images/payment_icons.png"></li>
                     </ul>

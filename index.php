@@ -178,7 +178,7 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-o"></i></span> </p>
                                         </div>
                                     </div></a>
                                 </div>
@@ -220,7 +220,7 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-o"></i></span> </p>
                                         </div>
                                     </div></a>
                             </div>
