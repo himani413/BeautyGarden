@@ -1,16 +1,15 @@
-
-
-.contact-row h1 {
-    font-family: 'Poppins', sans-serif, 'arial';
-    font-weight: 200px;
-    font-size: 40px;
+.category-name{
     text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size:40px;
+    font-family:  sans-serif, 'arial';
 }
 
-.contact-row h4 {
+.row h4 {
     font-family: 'Roboto', sans-serif, 'arial';
     font-weight: 400;
-    font-size: 15px;
+    font-size: 20px;
     color: #9b9b9b;
     line-height: 1.5;
 }
@@ -122,4 +121,21 @@ textarea:focus ~ span {
 .input-container input[type=checkbox]:checked + label {
   color: #f00;
   font-style: normal;
+}
+.topic{
+    font-family: sans-serif;
+    font-size: 60pt;
+    
+   
+}
+.con{
+   
+    color: #a52478;
+}
+.us{
+    color: darkgray;
+}
+input.sbmt {
+    padding: 0;
+    background-color: #4b8cfb;
 }

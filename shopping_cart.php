@@ -25,6 +25,7 @@
 <body>
 
     <?php
+        $item_count=0;
        if(isset($_SESSION['Email']) && isset($_SESSION['Fname']) && isset($_SESSION['Lname'])) {
 
         include "header.php";
@@ -106,7 +107,7 @@
                                 }
                                 echo "</table>";  
                             }else{
-                                echo "<h5>Cart is Empty</h5>";
+                            
                             }
                         ?>
                     </div>
@@ -114,36 +115,41 @@
                 <div class="col-md-4">
 
                     <div class="pt-4" >
-                        <h1>PRICE DETAILS<br></h1>
+                        <?php if($item_count){ ?>
+                        <h3>PRICE DETAILS<br></h3>
                         <hr><br>
                         <div class="row-price-details">
                             <div class="col-md-6">
                                 <?php
                                     if ($count){
                                         
-                                        echo "<h6>Price ($count items)</h6>";
+                                        echo "<p style='font-size:medium; font-weight: bold;'>Price ($count items)</p>";
                                     }else{
-                                        echo "<h6>Price (0 items)</h6>";
+                                        echo "<p style='font-size:medium; font-weight: bold;'>Price (0 items)</p>";
                                     }
                                 ?>
                                 <hr><br>
-                                <h6>Delivery Charges: <span class="text-success">FREE</span></h6><br>
+                                <p style="font-size:medium;">Delivery Charges: <span class="text-success">FREE</span></p><br>
                                 
                                 <hr>
                             </div>
                             <div class="col-md-6">
-                                <h6><br>Amount Payable
-                                : $<?php echo $total; ?></h6><br>
+                            <p style="font-size:medium;"><br>Amount Payable
+                                : LKR<?php echo $total; ?></p><br>
                                 
                                 <hr>
-                                <h6><br>Total Price:$<?php
+                                <p style="font-size:medium;"><br>Total Price:LKR<?php
                                     echo $total;
-                                    ?></h6>
+                                    ?></p>
                                 <form action = "paymentpage.php" method="POST">
                                     <input type='hidden' name='product' value='cart'>
                                     <input type="hidden" name="no_of_Products" value="<?php echo $item_count?>">
                                     <button name="buy" class="btn" value="<?php echo $total?>">Buy</button>
                                 </form>
+                                <?php } else{?>
+                                    <div class="empty"><h3>Oops! Cart is Empty! <br> Add some products from the shop.</h3><br><br><br></div>
+                                    <div class="emptypic"><img src="Images/empty.jpg" alt="picture" width="500px" ></div>
+                                    <?php }?>
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ $sql1 = "select distinct(category) from products";
 $result1 = $conn->query($sql1);
 
 ?>
+
 <?php //users
 
 $sql2 = "select * from users";
@@ -31,6 +32,13 @@ $result3 = $conn->query($sql3);
 
 $sql5 = "select * from paymentdetails";
 $result5 = $conn->query($sql5);
+
+?>
+
+<?php //shipped orders
+
+$sql6 = "select * from shippedorders";
+$result6 = $conn->query($sql6);
 
 ?>
 
@@ -52,7 +60,6 @@ if (isset($_POST['submit'])) {
     $sqlq2 = "select max(item_id) as maxid from products;";
     $result = $conn->query($sqlq2);
     $row = $result->fetch_assoc();
-    // echo $row['maxid'];
     $maxid = $row['maxid'];
     if (empty($productname)) {
         header("Location:adminpanel.php?category=addproducts&error=Product Name is required");
@@ -151,15 +158,6 @@ if (isset($_POST['sbmt'])) {
                 $sql2 = "INSERT INTO admins VALUES ('$email', '$securedpass','$fname', '$lname')";
                 $conn->query($sql2);
                 header("Location:adminpanel.php?category=newuser&success=new admin added");
-                
-                //header("Location:index.php?success=Activation Email Sent!");
-                //$link = "<a href='localhost/oriflames/verify-email.php?key=".$email."&verification=".$token."'>Click and Verify Email</a>";
-    
-                // $message = "Hi $fname! Account created here is the activation link : '$link' ";    
-    
-                // mail($email , 'Activate Account' , nl2br($message) , "From:" . 'dinukaekanayaka18@gmail.com');
-    
-                //email activation
     
             }
         }
@@ -167,22 +165,20 @@ if (isset($_POST['sbmt'])) {
 }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AddProducts</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" type="text/css" href="CSS/adminpanelstyle.css">
 </head>
 <body>
 <main>
 <div class="container" style="display:flex;">
     <div class="sidebar">
-        <div class="image" style="margin:30px;"><img src="Images/admin.png"></div> 
+        <div class="image"><img src="Images/admin.png"></div> 
         <div class="sidenav">
             <a href="adminpanel.php?category=profile">Profile</a>
             <a href="adminpanel.php?category=categories">Categories</a>
@@ -192,10 +188,12 @@ if (isset($_POST['sbmt'])) {
             <a href="adminpanel.php?category=viewuser">View users</a>
             <a href="adminpanel.php?category=viewadmin">View Admins</a>
             <a href="adminpanel.php?category=orders">Orders</a>
+            <a href="adminpanel.php?category=shippedorders">Shipped Orders</a>
             <a href="index.php?category=orders">Back to Home</a>
         </div>
     </div>
     <div class="panal-container">
+       <div class="dashname"> <h1><span class="f1">Admin</span><span class="f2"> Dashboard</span> </h1></div>
     <div class="row" style="background-color: white;">
                 <?php if ($_GET['category'] == 'profile') { ?>
                     <div class="items">
@@ -208,11 +206,13 @@ if (isset($_POST['sbmt'])) {
                             <button class="log_out" onclick="location.href='logout.php'">Log out</button>
                             <button class="delete" onclick="deleteAccount()">Delete Account</button>
                             <p id="demo"></p></div>
-               
+                            <?php if (isset($_GET['success'])) { ?>
+                                <p class="success"><?php echo $_GET['success']; ?></p>
+                            <?php } ?>
 
-
-
-
+                            <?php if (isset($_GET['error'])) { ?>
+                                <p class="error"><?php echo $_GET['error']; ?></p><br>
+                            <?php } ?>
                 </div>
 
                 <?php }elseif($_GET['category']=='categories'){  ?>
@@ -227,11 +227,8 @@ if (isset($_POST['sbmt'])) {
                             
                             <?php } ?>
 
-                        </table><br>
-                    <!--<button id="signup" style="margin-left: 100px;">Add New Category</button>-->
-
+                    </table><br>
                 </div>
-
                 <?php }elseif($_GET['category']=='addproducts'){ ?>
                     <div class="signup-items">
                     <div class="signup"><h1 style="text-align: center;"><br>Add Products</h1></div><br><br>
@@ -273,7 +270,6 @@ if (isset($_POST['sbmt'])) {
                             <span class="form-group"><label for="img3" class="inputnames">Image3 : </label><input type="file" id="img" name="img3" accept="image/*"></span>
                             <span class="form-group"><label for="img4" class="inputnames">Image4 : </label><input type="file" id="img" name="img4" accept="image/*"></span>
                             <br><br><span><input type="submit" id="signup" name="submit" value="Add Product"></span>
-                            <span><a href="index.php" class="homebtn">Back To Home</a></span>
 
                         </form>
                     </div>
@@ -296,21 +292,16 @@ if (isset($_POST['sbmt'])) {
                         
                             if(isset($_REQUEST["next"])){
                                 $st_no =  $_REQUEST["hidden"];
-                                //echo $st_no;
                                 $end = $st_no+ $results_per_page ;
-                                //echo $un;
                                 $sql = "SELECT * FROM products Where (item_id >= ".$st_no.") AND (item_id <=".$end.")";
-                                //echo $sql;
                             }
                             if(isset($_REQUEST["previos"])){
                                 $st_no =  $_REQUEST["hidden"] -  $results_per_page ;
                                 $end = $_REQUEST["hidden"];
-                                //echo $un;
-                                $sql = "SELECT * FROM products Where (item_id >= ".$st_no.") AND (item_id <=".$end.")";
-                                //echo $sql;
+                                $sql = "SELECT * FROM products Where (item_id >= ".$st_no.") AND (item_id <=".$end.")";   
                             }
                         
-                            $result5 = $conn->query($sql);
+                                $result5 = $conn->query($sql);
                             
                             ?>
                             <table border="1">
@@ -335,10 +326,8 @@ if (isset($_POST['sbmt'])) {
                                     <input type="hidden" name = "hidden" value = "<?php echo $st_no ?>">
                                     
                                     <input type="submit" class="previous "name ="previous" value="previous">
-                                    <input type="hidden" name = "hidden" value ="<?php echo $end ?>">
-                                    
+                                    <input type="hidden" name = "hidden" value ="<?php echo $end ?>">                          
                                     <input type="submit" class="next" name ="next" value="next">
-                            
 
                                 </form>
                             
@@ -369,7 +358,6 @@ if (isset($_POST['sbmt'])) {
                             <input type="password" name="adminpass" id="adminpass" class="form-control"></div><br><br>
                         
                             <br><br><span><input type="submit" id="signup" name="sbmt" value="Add Admin"></span>
-
                         </form>
                     </div>
                 </div>
@@ -383,17 +371,13 @@ if (isset($_POST['sbmt'])) {
                                 <th>Fname</th>
                                 <th>Lname</th>
                         </tr>
-
                         <?php  while($row3=$result2->fetch_assoc()){ ?>
                                 <tr>
                                     <td><?php echo $row3['Email']; ?></td>
                                     <td><?php echo $row3['Fname']; ?></td>
                                     <td><?php echo $row3['Lname']; ?></td>
                                 </tr>
-
                             <?php } ?>
-
-
                         </table>
                 </div>
 
@@ -415,8 +399,6 @@ if (isset($_POST['sbmt'])) {
                                 </tr>
 
                             <?php } ?>
-
-
                         </table>
                 </div>
 
@@ -427,21 +409,18 @@ if (isset($_POST['sbmt'])) {
                             $useremail = $_REQUEST["useremail"];
                             $orderID = $_REQUEST["doneID"];
 
-                            $sql="INSERT INTO shippedorders VALUES('$useremail','$orderID',curdate())";
+                            $sql="INSERT INTO shippedorders VALUES(NULL,'$useremail','$orderID',curdate())";
                             $result = $conn->query($sql);
-
-
 
                          }
                         
-                        
-                        ?>
+                    ?>
                     <div class="heading" style="text-align:center;"><br><h1>Current Orders</h1></div><br><br>
                     <div class="items" >
                     <table border="1">
                             <tr>
                                 <th>Order No</th>
-                                <th>User</th>
+                                <th>User_Mail</th>
                                 <th>Fname</th>
                                 <th>Lname</th>
                                 <th>Pay type</th>
@@ -449,16 +428,11 @@ if (isset($_POST['sbmt'])) {
                                 <th>City</th>
                                 <th>province</th>
                                 <th>Zip code</th>
-                                <th>Item type</th>
-                                <th>No of items</th>
                                 <th>Done</th>
-                                
                                 
                         </tr>
 
                         <?php $results_per_page = 25; 
-                          
-                        
                           
                           $number_of_result = $result5->num_rows; 
                           $result= $result5->fetch_all();
@@ -468,27 +442,40 @@ if (isset($_POST['sbmt'])) {
                       
                           if(isset($_REQUEST["next"])){
                               $st_no =  $_REQUEST["hidden"];
-                              //echo $st_no;
+                              
                               $end = $st_no+ $results_per_page ;
-                              //echo $un;
+                              
                               $sql = "SELECT * FROM paymentdetails Where (order_num >= ".$st_no.") AND (order_num<=".$end.")";
-                              //echo $sql;
+                              
                           }
                           if(isset($_REQUEST["previos"])){
                               $st_no =  $_REQUEST["hidden"] -  $results_per_page ;
                               $end = $_REQUEST["hidden"];
-                              //echo $un;
+                              
                               $sql = "SELECT * FROM paymentdetails Where (order_num >= ".$st_no.") AND (order_num <=".$end.")";
-                              //echo $sql;
+                              
                           }
                       
                           $result5 = $conn->query($sql); ?>
 
-                        <?php  while($row5=$result5->fetch_assoc()){ ?>
-                            <?php $orderID =  $row5['order_num']; 
-                             $useremail = $row5['user_email'];
-                            ?>
-                                <tr>
+                        <?php  while($row5=$result5->fetch_assoc()){ 
+                            $orderID =  $row5['order_num']; 
+                            $useremail = $row5['user_email'];
+                            $sql = "SELECT orderID from shippedorders WHERE orderID=$orderID";
+                            $result = $conn->query($sql);
+                            $result = $result->fetch_all();
+                                    if($result){
+                                        echo "<tr style='background-color: #D7BDE2;'>";
+
+                                    }
+                                    else{
+                                       echo" <tr>";
+
+                                    }
+                                
+                                
+                                ?>
+                                
 
                                     <td><?php echo $row5['order_num']; ?></td>
                                     <td><?php echo $row5['user_email']; ?></td>
@@ -499,13 +486,25 @@ if (isset($_POST['sbmt'])) {
                                     <td><?php echo $row5['city']; ?></td>
                                     <td><?php echo $row5['province']; ?></td>
                                     <td><?php echo $row5['zipcode']; ?></td>
-                                    <td><?php echo $row5['itemType']; ?></td>
-                                    <td><?php echo $row5['no_of_products']; ?></td>
-                                    <td><form action="adminpanel.php?category=orders" method="POST">
-                                        <input type="hidden" name="doneID" value="<?php echo $orderID;?>">
-                                        <input type="hidden" name="useremail" value="<?php echo $useremail;?>">
-                                        <input type="submit" value="Shipped" name="shipped" class="shipped">
-                                    </form></td>
+                                    <?php 
+                                        
+                                        if($result){
+                                            echo "<td>Shipped</td>";
+    
+                                        }
+                                        else{
+                                           echo" <td><form action='adminpanel.php?category=orders' method='POST'>
+                                           <input type='hidden' name='doneID' value='$orderID'>
+                                           <input type='hidden' name='useremail' value='$useremail'>
+                                           <input type='submit' value='Done Shipping' name='shipped' class='shipped'>
+                                       </form></td>";
+    
+                                        }
+                                        
+                                    ?>
+
+
+
                                     
                                 </tr>
 
@@ -521,13 +520,77 @@ if (isset($_POST['sbmt'])) {
                                     
                                     <input type="submit" class="next" name ="next" value="next">
                             
-
                                 </form>
                 </div>
+                <?php }
+                elseif($_GET['category']=='shippedorders'){ ?>
+                    <div class="heading" style="text-align:center;"><br><h1>Shipped Orders</h1></div><br><br>
+                    <div class="items" >
+                    <table border="1">
+                            <tr>
+                                <th>Order No</th>
+                                <th>User_Mail</th>
+                                <th>Shipped Date</th>
+                                
+                        </tr>
 
-                <?php } ?>
+                        <?php $results_per_page = 25; 
+                          
+                          $number_of_result = $result6->num_rows; 
+                          $result= $result6->fetch_all();
+                          if($result){
+                            $st_no =  $result[0][0];
+                          }
+                          else{
+                            $st_no = 0;
+                          }
+                         
+                          $end = $st_no+ $results_per_page ;
+                          $sql = "SELECT * FROM shippedorders Where (ID >= ".$st_no.") AND (ID<=".$end.")"; 
+                      
+                          if(isset($_REQUEST["next"])){
+                              $st_no =  $_REQUEST["hidden"];
+                              
+                              $end = $st_no+ $results_per_page ;
+                              
+                              $sql = "SELECT * FROM shippedorders Where (ID >= ".$st_no.") AND (ID<=".$end.")";
+                              
+                          }
+                          if(isset($_REQUEST["previos"])){
+                              $st_no =  $_REQUEST["hidden"] -  $results_per_page ;
+                              $end = $_REQUEST["hidden"];
+                              
+                              $sql = "SELECT * FROM shippedorders Where (ID >= ".$st_no.") AND (ID<=".$end.")";
+                              
+                          }
+                      
+                          $result6 = $conn->query($sql); ?>
+
+                        <?php  while($row6=$result6->fetch_assoc()){ 
+                            ?>
+                                <tr>
+
+                                    <td><?php echo $row6['orderID']; ?></td>
+                                    <td><?php echo $row6['userEmail']; ?></td>
+                                    <td><?php echo $row6['Date']; ?></td>
+                                  
+                                    
+                                    
+                                </tr>
 
 
+               <?php  }?>
+                                       </table>
+                                       <form action="adminpanel.php?category=shippedorders" method = "post">
+                                                   <input type="hidden" name = "hidden" value = "<?php echo $st_no ?>">
+                                                   
+                                                   <input type="submit" class="previous "name ="previous" value="previous">
+                                                   <input type="hidden" name = "hidden" value ="<?php echo $end ?>">
+                                                   
+                                                   <input type="submit" class="next" name ="next" value="next">
+                                           
+                                               </form>
+              <?php }?>
             </div>
     </div>
     </div>

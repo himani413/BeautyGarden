@@ -9,14 +9,16 @@ main{
     margin-left: 60px;
     margin-bottom: 40px;
 }
-.topimage{
+.topimg{
     border: 0;
+    float: left;
     width: 100%;
-    height: auto;
+    height: 840px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    padding-top: 25%;
 }
 
 .img-image {
@@ -28,12 +30,28 @@ main{
 .category{
     padding: 20px;
 }
-.category-name{
-    text-align: center;
-    color: rgb(80, 80, 184);
-    font-weight: bold;
+.category-name1{
+   
+    color: black;
+   
     font-size:30px;
+    font-weight: bolder;
 }
+.category-name{
+   
+    color: rgb(3, 30, 71);
+   
+    font-size:30px;
+    font-weight: bolder;
+}
+.category-name2{
+    padding-bottom: 20px;
+    text-align: center;
+    color:#a52478;
+    font-weight: bold;
+    font-size:45px;
+}
+
 
 .item-row{
     display: flex;
@@ -41,8 +59,8 @@ main{
 }
 .item-col{
     display: block;
-    margin-top: 20px;
-    border-bottom: 2px solid blue;
+    margin-top: 10px;
+    border-bottom: 2px solid rgb(240, 112, 208);
     padding: 10px;
 }
 .item-col a{
@@ -51,4 +69,73 @@ main{
 
 .item p{
     font-size:14px;
+}
+
+.topic{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.topic h1{
+    font-family: sans-serif;
+    font-size: 60pt;
+   
+}
+.abt{
+   
+    color: #a52478;
+}
+.us{
+    color: darkgray;
+}
+.com{
+    font-size: 100px;
+    font-family:fantasy;
+    color: #a52478;
+}
+.qus{
+    font-size: 100px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: darkgray;
+}
+.pg{
+    font-family:  cursive;
+    font-size: 20px;
+}
+.sri{
+    color: #a52478;
+}
+.description{
+    font-family: sans-serif;
+}
+
+.item figure {
+	position: relative;
+}
+.item figure::before {
+	position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.item figure:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
 }

@@ -149,6 +149,7 @@ main{
   position: absolute;
 
 }
+
 .description{
     padding: 40px;
 }
@@ -156,11 +157,12 @@ main{
   width: 40%;
 }
 .countdown-col{
+  height: 875px;
+  width: 55%;
   text-align: center;
   align-items: center;
   background-color: lavender;
   padding: 100px;
-  margin-top: 20px;
 }
 .countdown-items {
   font-size: 60px;
@@ -253,6 +255,12 @@ main{
   border-radius: 20px;
 }
 
+.our-brands{
+  margin-top: 20px;
+}
+.newsletter{
+  margin-top: 20px;
+}
 .news-container{
     background-color: lavender;
     font-size: larger;

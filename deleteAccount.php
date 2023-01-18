@@ -26,19 +26,44 @@ if(isset($_POST['delete'])){
 
     $password= $_POST['password'];
 
-    if($pass == md5($password)){
-        if($_SESSION['Email']){
-            $sql = "DELETE FROM users WHERE Email ='$user_email'";
+    if($password){
+        if($pass == md5($password)){
+            if($_SESSION['Email']){
+                $sql = "DELETE FROM users WHERE Email ='$user_email'";
+            }
+            else{
+                $sql = "DELETE FROM admins WHERE Email ='$admin_email'";
+            }
+            $conn->query($sql);
+            echo "<script>alert('Account Deleted Successfully')</script>";
+            session_unset();
+            session_destroy();
+
+            header("Location:index.php");
+            
+            
         }
         else{
-            $sql = "DELETE FROM admins WHERE Email ='$admin_email'";
+            if($_SESSION['Email']){
+                header("Location:account.php?error=Password is not matched!");
+            }
+            else{
+                header("Location:adminpanel.php?category=profile&error=Password is not matched!");
+            }
+           
+            
+            
         }
-        $conn->query($sql);
-        echo "<script>alert('Account Deleted Successfully')</script>";
-        session_unset();
-        session_destroy();
-
-        header("Location:index.php");
+    }
+    else{
+        if($_SESSION['Email']){
+            header("Location:account.php?error=Enter your password to delete the account");
+        }
+        else{
+            header("Location:adminpanel.php?category=profile&error=Enter your password to delete the account");
+        }
+   
+           
         
         
     }

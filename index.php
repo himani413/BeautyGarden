@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/home.css">
-    <title>Home</title>
-
+    <title>Beauty Garden-Srilanka</title>
 </head>
 
 <body>
@@ -35,6 +34,7 @@
                 </div>
 
         </div>
+       
         <br>
         <div style="text-align:center">
         <span class="dot"></span> 
@@ -91,7 +91,7 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-half-o"></i></span> </p>
                                         </div>
                                     </div></a>
                             </div>
@@ -107,8 +107,8 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-half-o"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span> </p>
                                         </div>
                                     </div></a>
                             </div>
@@ -144,7 +144,7 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-half-o"></i></span> </p>
                                         </div>
                                     </div></a>
                             </div>
@@ -202,8 +202,8 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-half-o"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span> </p>
                                         </div>
                                     </div></a>
                             </div>
@@ -237,7 +237,7 @@
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
                                         <span><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span> </p>
+                                        <span><i class="fa fa-star-half-o"></i></span> </p>
                                         </div>
                                     </div></a>
                             </div>
@@ -264,7 +264,7 @@
         <br>
         <section class="countdown">
                 <div class="countdown-row" style="display:flex;">
-                    <div class="col"><img src="Images/pexels-arsham-haghani-3387577.jpg" alt="img" width="500px"></div>
+                    <div class="col"><img src="Images/pexels-arsham-haghani-3387577.jpg" alt="img" width="700px"></div>
                     
                     <div class="countdown-col">
                         <div class="countdown-items">
@@ -321,6 +321,33 @@
                     <br>
                     </div>
     </main>
+    <section class="our-brands">
+                        <div class="category">
+                            <div class="category-name">Our Top Brands</div>
+                                <div class="item-row">
+                                <div class="item-col">
+                                <a href="#"><div class="item">
+                                        <img src="Images/brands1.png" alt=".." width="200px" height="200px" style="border-radius:50%">
+                                    </div></a>
+                                </div>
+                                <div class="item-col">
+                                <a href="#"><div class="item">
+                                        <img src="Images/brands2.png" alt=".." width="200px" height="200px" style="border-radius:50%">
+                                    </div></a>
+                                </div>
+                                <div class="item-col">
+                                <a href="#"><div class="item">
+                                        <img src="Images/brands3.png" alt=".." width="200px" height="200px" style="border-radius:50%">
+                                    </div></a>
+                                </div>
+                                <div class="item-col">
+                                <a href="#"><div class="item">
+                                        <img src="Images/brands4.png" alt=".." width="200px" height="200px" style="border-radius:50%">
+                                    </div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
     <section class="newsletter">
         <div class="new-container">
             <div class="row">

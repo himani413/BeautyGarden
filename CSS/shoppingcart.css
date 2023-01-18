@@ -24,6 +24,7 @@ tbody tr {
 
 tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
+
 }
 
 tbody tr:last-of-type {
@@ -53,8 +54,8 @@ tbody tr.active-row {
   }
 
 .col-md-4{
-    float:left;
-     width:70%;
+    float:right;
+     width:40%;
      height:100%;
      position: relative;
      padding: 0;
@@ -69,4 +70,11 @@ tbody tr.active-row {
 }
 .text-success{
     color: green;
+}
+.empty{
+    position:relative;
+    }
+.emptypic{
+    padding-top: 0;
+    margin-top: 0;
 }

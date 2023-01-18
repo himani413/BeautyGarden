@@ -13,39 +13,28 @@
     </header>
     <main>
 
-    <section class="category-path">
-        <div class="path-container">
-            <div class="path-items">
-                <a href="index.php">Home
-                    <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-                </a>
-                <a href="index.php">about
-                    <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="topic"><h1><span class="abt">ABOUT</span><span class="us"> US</span></h1></div>
 
     <div class="topimg">
-        <img src="Images/logoNew.jpg" alt="" style="vertical-align: middle; width: auto; height:auto; display: block; margin-left: auto; margin-right: auto;">
+        <img src="Images/logoNew.jpg" alt="" style="vertical-align: middle; width: 70%; height:auto; display: block; margin-left: auto; margin-right: auto;">
         <p>&nbsp;</p>
     </div>
     <section class="body">
         <div class="img-image">
             <div class="top">
-                <h1 class="category-name" style="text-align: center; font-size:30px;  padding-top:30px;padding-bottom:15px">Who we are</h1>
+                <h1 class="category-name1" style=" font-size:45px;  padding-top:30px;padding-bottom:15px">Who We Are <span class="qus">?</span></h1>
                 <p>&nbsp;</p>
-                <h2 class="category-name" style="text-align: center; font-size:30px;  padding-top:30px;padding-bottom:15px">A beauty company like no other</h2>
-                <p style="text-align: center;">
+                <h2 class="category-name" style="font-size:30px;  padding-top:30px;padding-bottom:15px"><span class="com">"</span> Beauty Company Like No Other</h2>
+                <p class="pg" >
                     For over 50 years we have enabled people from all over the world to celebrate their personal beauty 
                     and fulfil their dreams. We create and offer high quality, safe, trend-driven products to beauty 
                     lovers and the unique possibility to become part of a global beauty community.
                 </p>
                 <p>&nbsp;</p>
-                <h2  class="category-name" style="text-align: center; font-size:30px;  padding-top:30px;padding-bottom:15px">Beauty by Srilanka</h2>
-                <p style="text-align: center;">
+                <h2  class="category-name" style="font-size:30px;  padding-top:30px;padding-bottom:15px">Beauty by <span class="sri">Sri Lanka</span></h2>
+                <p class="pg">
                     As a Srilankan beauty brand we believe that when you look and feel good you have the opportunity to reach your full potential. 
-                    And together with a passionate and supportive global community anything is possible. That’s beauty from a SRilankan perspective.
+                    And together with a passionate and supportive global community anything is possible. That’s beauty from a Srilankan perspective.
                 </p>
                 <p>&nbsp;</p>
             </div>
@@ -55,7 +44,7 @@
 
     <section class="developers">
     <div class="category">
-                        <div class="category-name">Our Team</div>
+                        <div class="category-name2">Our Team</div>
                             <div class="item-row">
                             <div class="item-col">
                                 <div class="item">
@@ -69,7 +58,7 @@
                             </div>
                             <div class="item-col">
                                <div class="item">
-                                    <img src="Images/i.jpg" alt=".." height="200px" width="200px">
+                                    <figure><img src="Images/i.jpg" alt=".." height="200px" width="200px"></figure>
                                     <div class="description">
                                     <br>
                                     <h3>Isuru Sasanga</h3>
